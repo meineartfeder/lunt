@@ -20,7 +20,7 @@
 				
 				<?php the_tags( __('Tags: ','lunt'), ', ', ''); ?>
 			
-				<?php posted_on(); ?>
+				<?php #posted_on(); ?>
 
 			</div>
 			

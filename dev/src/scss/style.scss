@@ -16,12 +16,17 @@ Style sheet for lunt
 //Core styles
 @import 'core/reset'; //normalize is also available
 
+// foundation
+@import 'settings';
+@import '../../bower_components/foundation/scss/foundation';
 
 //Modules for things like nav, content
-//@import 'modules/module-name';
+@import 'modules/form';
+
+@import 'modules/content';
 
 //Default Wordpress classes for your enjoyment/ hacking!
-@import 'modules/wp-core';
+// @import 'modules/wp-core';
 
 
 //Print styles & misc.

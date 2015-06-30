@@ -116,20 +116,26 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 	<?php wp_head(); ?>
-
+	
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300italic,300,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 </head>
 
 <body <?php body_class(); ?>>
 
-	<!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
-	<div id="wrapper">
-
-		<header id="header" role="banner">
-			<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<div class="description"><?php bloginfo( 'description' ); ?></div>
+		<header class="header" role="banner">
+			<div class="row">
+				<div class="large-12 column">
+					<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<div class="description"><?php bloginfo( 'description' ); ?></div>
+				</div>
+			</div>
 		</header>
 
-		<nav id="nav" role="navigation">
-			<?php wp_nav_menu( array('menu' => 'primary') ); ?>
-		</nav>
+		<!-- <nav id="nav" role="navigation">
+			<div class="row">
+				<div class="large-12 column">
+					<?php wp_nav_menu( array('menu' => 'primary') ); ?>
+				</div>
+			</div>
+		</nav> -->
 

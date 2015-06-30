@@ -1,6 +1,7 @@
 /* Generated for lunt */
 module.exports = function (grunt) {
 	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+
 	// 1. All configuration goes here
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -194,8 +195,36 @@ module.exports = function (grunt) {
 					{ src: ['../../**/*',  '!../../dev/**', '!../../production/**'] },
 				]
 			}
-		}
+		},
 		// end make a zipfile
+
+		rsync: {
+			options: {
+				args: ["--verbose"],
+				exclude: [".git*","*.scss","node_modules"],
+				recursive: true
+			},
+			// dist: {
+			// 	options: {
+			// 		src: "./",
+			// 		dest: "../dist"
+			// 	}
+			// },
+			// stage: {
+			// 	options: {
+			// 		src: "../dist/",
+			// 		dest: "/var/www/site",
+			// 		host: "user@staging-host"
+			// 	}
+			// },
+			prod: {
+				options: {
+					src: "../../static",
+					dest: "/home/francis/wp-content/themes/lunt",
+					host: "francis@landesunternehmen.caex.at"
+				}
+			}
+		}
 		
 	}); //end grunt package configs
 	
@@ -206,11 +235,19 @@ module.exports = function (grunt) {
 	grunt.registerTask('prepFonts',  [ 'copy:fonts' ]);
 
 	//RUN ON START
-	grunt.registerTask('init',       ['notify:initStart', 'bowercopy', 'copy:js', 'copy:images', 'sass:dev','notify:initDone']);
+	grunt.registerTask('init',       ['notify:initStart', 'bowercopy', 'copy:js', 'copy:images', 'sass:dev', 'notify:initDone']);
 
 	//RUN FOR PRODUCTION 
 	grunt.registerTask('prod',       ['notify:distStart', 'bowercopy', 'prepJS', 'prepImages', 'prepStyles', 'prepFonts', 'compress:production', 'notify:distDone']);
 	
 	//DEFAULT
-	grunt.registerTask('default', []);
+	grunt.registerTask('default', [
+		'rsync:prod'
+	]);
+
+	grunt.registerTask('upload', [
+		'rsync:prod'
+	]);
+
+	grunt.loadNpmTasks("grunt-rsync");
 };
