@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 			},
 			js: {
 				files: '../src/js/**/*.js',
-				tasks: ['copy:js'],
+				tasks: ['prepJS'],
 				options: {
 					livereload: true,
 				},
@@ -149,6 +149,18 @@ module.exports = function (grunt) {
 			}
 		},
 		//end Bower copy
+
+		uglify: {
+			footerJs: {
+				files: {
+					'../../static/js/footer.min.js': [
+						'../bower_components/Snap.svg/dist/snap.svg-min.js'
+						// '../src/footer.js'
+					]
+				}
+			}
+		},
+
 		//copy
 		copy: {
 			js: {
@@ -229,13 +241,13 @@ module.exports = function (grunt) {
 	}); //end grunt package configs
 	
 	//Asset pipelines
-	grunt.registerTask('prepJS',     [ 'copy:js' ]);
+	grunt.registerTask('prepJS',     [ 'copy:js', 'uglify:footerJs' ]);
 	grunt.registerTask('prepStyles', [ 'sass:dist', 'autoprefixer', 'cssmin' ]);
 	grunt.registerTask('prepImages', [ 'copy:images', 'imagemin:dynamic' ]);
 	grunt.registerTask('prepFonts',  [ 'copy:fonts' ]);
 
 	//RUN ON START
-	grunt.registerTask('init',       ['notify:initStart', 'bowercopy', 'copy:js', 'copy:images', 'sass:dev', 'notify:initDone']);
+	grunt.registerTask('init',       ['notify:initStart', 'bowercopy', 'prepJS', 'copy:images', 'sass:dev', 'notify:initDone']);
 
 	//RUN FOR PRODUCTION 
 	grunt.registerTask('prod',       ['notify:distStart', 'bowercopy', 'prepJS', 'prepImages', 'prepStyles', 'prepFonts', 'compress:production', 'notify:distDone']);
@@ -245,9 +257,14 @@ module.exports = function (grunt) {
 		'rsync:prod'
 	]);
 
+	grunt.registerTask('watch', [
+		'watch'
+	]);
+
 	grunt.registerTask('upload', [
 		'rsync:prod'
 	]);
 
 	grunt.loadNpmTasks("grunt-rsync");
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 };

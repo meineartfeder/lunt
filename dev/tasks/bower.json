@@ -4,6 +4,7 @@
   "dependencies": {
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
-    "foundation": "~5.5.2"
+    "foundation": "~5.5.2",
+    "Snap.svg": "~0.4.1"
   }
 }
