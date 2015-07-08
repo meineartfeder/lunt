@@ -12,7 +12,7 @@
 			
 				<!-- All this stuff in here only shows up if you DON'T have any widgets active in this zone -->
 
-				<?php get_search_form(); ?>
+				<?php #get_search_form(); ?>
 			
 			<?php endif; ?>
 		</div>

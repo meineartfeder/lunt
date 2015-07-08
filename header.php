@@ -117,16 +117,27 @@
 
 	<?php wp_head(); ?>
 	
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300italic,300,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body <?php body_class(); ?>>
 
-		<header class="header" role="banner">
+		<header class="header" role="banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/static/images/bg/bg-01.jpg);">
 			<div class="row">
 				<div class="large-12 column">
-					<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<div class="description"><?php bloginfo( 'description' ); ?></div>
+					<h1 class="logo">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+							<span class="logo__name">2415</span> 
+							<span class="logo__description">Landesunternehmen CaEx Niederösterreich</span>
+						</a>
+					</h1>
+					<p class="description"><?php bloginfo( 'description' ); ?></p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-8 medium-6 small-centered column">
+					<?php get_template_part('elements/watch'); ?>
 				</div>
 			</div>
 		</header>
