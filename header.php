@@ -32,7 +32,7 @@
 	<meta name="title" content="<?php wp_title( '|', true, 'right' ); ?>">
 
 	<!--Google will often use this as its description of your page/site. Make it good.-->
-	<meta name="description" content="<?php bloginfo('description'); ?>" />
+	<?php #echo '<meta name="description" content="<?php bloginfo('description'); ?>" />'; ?>
 
 	<?php
 		if (true == of_get_option('meta_author'))
@@ -136,11 +136,13 @@
 			</div>
 
 			<div class="row">
-				<div class="small-8 medium-6 small-centered column">
+				<div class="small-8 medium-6 large-6 small-centered column">
 					<?php get_template_part('elements/watch'); ?>
 				</div>
 			</div>
 		</header>
+
+		<div class="header-spacer"></div>
 
 		<!-- <nav id="nav" role="navigation">
 			<div class="row">
