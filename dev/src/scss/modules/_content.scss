@@ -1,7 +1,104 @@
+body {
+	word-break: break-word;
+}
+
 // MAIN MENU
 
 .menu {
 	ul {
 		@extend .no-bullet;
 	}
+}
+
+// SVG
+
+.svg-container {
+  display: block;
+  // width: 100px;
+  // height: 100px;
+}
+.svg-container svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+// HEADER
+
+.header {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+	background-attachment: fixed;
+	width: 100%;
+	height: 87%;
+	color: #FFFFFF;
+	text-align: center;
+	position: relative;
+	border: 15px solid;
+	border-bottom: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 0;
+
+	&:before {
+		display: block;
+		content: "overlay";
+		text-indent: -9999px;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: rgba(black, 0.3);
+	}
+
+	h1, h2, h3, h4, h5, h5 {
+		color: #FFFFFF;
+	}
+
+	p {
+		color: #FFFFFF;
+	}
+
+	a {
+		color: #FFFFFF;
+	}
+	
+	.svg-container {
+		margin: 3vh auto;
+	}
+
+	svg {
+		path {
+			fill: #FFFFFF;
+		}
+	}
+}
+
+.header-spacer {
+	height: 85%;
+}
+
+.logo {
+	font-size: 52px;
+	font-size: 3vw;
+	
+	&__name {
+		font-size: 180px;
+		font-size: 9vw;
+		font-weight: $webfont-weight-light;
+		display: block;
+	}
+}
+
+// CONTENT
+
+.content-section {
+	padding-top: rem-calc(30);
+	padding-bottom: rem-calc(30);
+	background-color: $white;
+	z-index: 10;
+	position: relative;
 }
