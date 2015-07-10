@@ -28,18 +28,17 @@
  	* @return void
  	*/
 	// Load jQuery
-	if ( !is_admin() ) {
-	   wp_deregister_script('jquery');
-	   wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"), false);
-	   wp_enqueue_script('jquery');
-	}
+	// if ( !is_admin() ) {
+	//    wp_deregister_script('jquery');
+	//    wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"), false);
+	//    wp_enqueue_script('jquery');
+	// }
 
 	    
 	function lunt_enqueue_scripts() {
 	    wp_enqueue_style( 'lunt-styles', get_template_directory_uri() . '/static/css/style.css' ); //our stylesheet
 	    wp_enqueue_script( 'jquery' );
-	    wp_enqueue_script( 'plugin-scripts', get_template_directory_uri() . '/static/js/footer.min.js', array(), '1.0', true );
-	    wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/static/js/footer.js', array(), '2.0', true );
+	    wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/static/js/footer.min.js', array(), '1.0', true );
 	    if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 	}
 	add_action( 'wp_enqueue_scripts', 'lunt_enqueue_scripts' );

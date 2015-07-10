@@ -1,0 +1,181 @@
+/* Helper classes */
+
+// Prevent callout
+.nocallout {
+	-webkit-touch-callout: none;
+}
+
+// A hack for HTML5 contenteditable attribute on mobile
+textarea[contenteditable] {
+	-webkit-appearance: none;
+}
+
+// A workaround for S60 3.x and 5.0 devices which do not animated gif images if they have been set as display: none
+
+.gifhidden {
+	position: absolute;
+	left: -100%;
+}
+
+// Image replacement
+.ir {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: 0;
+	direction: ltr;
+	display: block;
+	overflow: hidden;
+	text-align: left;
+	text-indent: -999em;
+
+	br {
+		display: none;
+	}
+}
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+// Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+// Hide visually and from screenreaders, but maintain layout
+.invisible {
+	visibility: hidden;
+}
+
+// Clearfix helper Used to contain floats: h5bp.com/q
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+// For IE 6/7 only Include this rule to trigger hasLayout and contain floats.
+.clearfix {
+	*zoom: 1;
+}
+
+// NAV SEM
+.nav_sem {
+	display: block;
+	left: -9999px;
+	margin: 0;
+	position: fixed;
+	top: -9999px;
+	z-index: 99999;
+	overflow:hidden;
+	background-color:#EFEFEF;
+	border:2px solid #666;
+	padding:10px;
+
+	&:focus {
+		top:10px;
+		left:10px;
+	}
+}
+
+// Responsive Youtube Video
+.resvideo, .resvideo_whatchado {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+	overflow: hidden;
+	
+	iframe, img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// Responsive Whachado Video
+.resvideo_whatchado {
+	padding-bottom: 53%; // 55%
+	margin: 1em 0;
+}
+
+// Selection colors
+::selection {
+	background: $primary-color; // Firefox
+	color:#FFF;
+	text-shadow:none;
+}
+
+::-moz-selection {
+	background: $primary-color; // Safari
+	color:#FFF;
+	text-shadow:none;
+}
+
+// hardware-accelerated css animation http://davidwalsh.name/translate3d
+%hardware-accelerated, .hardware-accelerated {
+	// @include translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+}
+
+@mixin hardware-accelerated {
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+}
+
+// placeholder styling
+input:-moz-placeholder {
+	color: $steel;
+}
+
+input::-webkit-input-placeholder {
+	color: $steel;
+}
+
+input.placeholder {
+	color: $steel;
+}
+
+input::-moz-focus-inner {
+	border:0;
+}
+
+
+// hides the spin-button for firefox
+input[type=number] {
+    -moz-appearance:textfield;
+}
+// hides the spin-button for chrome
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

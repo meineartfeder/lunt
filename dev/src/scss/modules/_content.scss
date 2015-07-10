@@ -13,9 +13,8 @@ body {
 // SVG
 
 .svg-container {
+  @include hardware-accelerated;
   display: block;
-  // width: 100px;
-  // height: 100px;
 }
 .svg-container svg {
   max-width: 100%;
@@ -25,33 +24,37 @@ body {
 // HEADER
 
 .header {
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-size: cover;
-	background-attachment: fixed;
+	border: 15px solid $white;
 	width: 100%;
-	height: 87%;
-	color: #FFFFFF;
-	text-align: center;
-	position: relative;
-	border: 15px solid;
-	border-bottom: none;
+	height: 100%;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 0;
-
-	&:before {
-		display: block;
-		content: "overlay";
-		text-indent: -9999px;
+	
+	.respbg-image-wrapper {
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		background-size: cover;
+		background-attachment: fixed;
 		width: 100%;
 		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		background-color: rgba(black, 0.3);
+		color: #FFFFFF;
+		text-align: center;
+		position: relative;
+
+		&:before {
+			display: block;
+			content: "overlay";
+			text-indent: -9999px;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(black, 0.3);
+		}
 	}
 
 	h1, h2, h3, h4, h5, h5 {
@@ -78,7 +81,7 @@ body {
 }
 
 .header-spacer {
-	height: 85%;
+	height: 100%;
 }
 
 .logo {
@@ -91,13 +94,28 @@ body {
 		font-weight: $webfont-weight-light;
 		display: block;
 	}
+
+	@include respond-to(small-only) {
+		font-size: rem-calc(30);
+		
+		&__name {
+			font-size: rem-calc(50);
+		}
+	}
 }
 
 // CONTENT
 
 .content-section {
-	padding-top: rem-calc(30);
+	padding-top: rem-calc(15);
 	padding-bottom: rem-calc(30);
+	background-color: $white;
+	z-index: 10;
+	position: relative;
+	margin-top: rem-calc(-100);
+}
+
+.footer {
 	background-color: $white;
 	z-index: 10;
 	position: relative;

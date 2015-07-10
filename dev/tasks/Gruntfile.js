@@ -140,11 +140,11 @@ module.exports = function (grunt) {
 		bowercopy: {
 			libs: {
 				options: {
-						destPrefix: '../../static/js'
+					destPrefix: '../../static/js'
 				},
 				files: {
-						'modernizr.js': 'modernizr/modernizr.js',
-						'jquery.js': 'jquery/jquery.js',
+					'modernizr.js': 'modernizr/modernizr.js',
+					'jquery.js': 'jquery/jquery.js',
 				}
 			}
 		},
@@ -154,8 +154,8 @@ module.exports = function (grunt) {
 			footerJs: {
 				files: {
 					'../../static/js/footer.min.js': [
-						'../bower_components/Snap.svg/dist/snap.svg-min.js'
-						// '../src/footer.js'
+						'../bower_components/Snap.svg/dist/snap.svg-min.js',
+						'../src/js/footer.js'
 					]
 				}
 			}
@@ -186,10 +186,10 @@ module.exports = function (grunt) {
 
 
 		//Image min
-		imagemin: {                         
-			dynamic: {                         
+		imagemin: {
+			dynamic: {
 				files: [{
-					expand: true,                  
+					expand: true,
 					src: ['../../static/images/**/*.{png,jpg,gif}'],
 					dest: '../../static/images'
 				}]
@@ -212,8 +212,8 @@ module.exports = function (grunt) {
 
 		rsync: {
 			options: {
-				args: ["--verbose"],
-				exclude: [".git*","*.scss","node_modules"],
+				args: ['--verbose'],
+				exclude: ['.git*', '*.scss',' node_modules'],
 				recursive: true
 			},
 			// dist: {
@@ -231,9 +231,9 @@ module.exports = function (grunt) {
 			// },
 			prod: {
 				options: {
-					src: "../../static",
-					dest: "/home/francis/wp-content/themes/lunt",
-					host: "francis@landesunternehmen.caex.at"
+					src: '../../static',
+					dest: '/home/francis/wp-content/themes/lunt',
+					host: 'francis@landesunternehmen.caex.at'
 				}
 			}
 		}
@@ -241,7 +241,7 @@ module.exports = function (grunt) {
 	}); //end grunt package configs
 	
 	//Asset pipelines
-	grunt.registerTask('prepJS',     [ 'copy:js', 'uglify:footerJs' ]);
+	grunt.registerTask('prepJS',     [ 'uglify:footerJs' ]);
 	grunt.registerTask('prepStyles', [ 'sass:dist', 'autoprefixer', 'cssmin' ]);
 	grunt.registerTask('prepImages', [ 'copy:images', 'imagemin:dynamic' ]);
 	grunt.registerTask('prepFonts',  [ 'copy:fonts' ]);
@@ -265,6 +265,6 @@ module.exports = function (grunt) {
 		'rsync:prod'
 	]);
 
-	grunt.loadNpmTasks("grunt-rsync");
+	grunt.loadNpmTasks('grunt-rsync');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 };

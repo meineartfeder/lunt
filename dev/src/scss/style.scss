@@ -11,6 +11,7 @@ Style sheet for lunt
 //load anything that is used to create other elements
 @import 'constructors/generic-placeholder';//see notes in file
 @import 'constructors/functions';
+@import 'constructors/mixins';
 @import 'constructors/clearfix';//see notes in file
 
 //Core styles
@@ -22,6 +23,7 @@ Style sheet for lunt
 
 //Modules for things like nav, content
 @import 'modules/form';
+@import 'modules/helper';
 
 @import 'modules/content';
 

@@ -11,28 +11,20 @@
 <!--[if IE 8 ]>    <html class="ie ie8 ie-lt10 ie-lt9 no-js" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie ie9 ie-lt10 no-js" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 9]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
 
 <head id="<?php echo of_get_option('meta_headid'); ?>" data-template-set="lunt-wordpress-theme">
-
-	<meta charset="<?php bloginfo('charset'); ?>">
-
-	<!-- Always force latest IE rendering engine (even in intranet) -->
-	<!--[if IE ]>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<![endif]-->
-
-	<?php
-		if (is_search())
-			echo '<meta name="robots" content="noindex, nofollow" />';
-	?>
-
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	
+	<!-- VIEWPORT -->
+	<meta name="HandheldFriendly" content="true">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<meta name="title" content="<?php wp_title( '|', true, 'right' ); ?>">
-
-	<!--Google will often use this as its description of your page/site. Make it good.-->
-	<?php #echo '<meta name="description" content="<?php bloginfo('description'); ?>" />'; ?>
+	
+	<?php #echo '<meta name="description" content="' . bloginfo('description') . '" />'; ?>
 
 	<?php
 		if (true == of_get_option('meta_author'))
@@ -44,74 +36,6 @@
 
 	<meta name="Copyright" content="Copyright &copy; <?php bloginfo('name'); ?> <?php echo date('Y'); ?>. All Rights Reserved.">
 
-	<?php
-		/*
-			j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
-			 - device-width : Occupy full width of the screen in its current orientation
-			 - initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
-			 - maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
-		*/
-		if (true == of_get_option('meta_viewport'))
-			echo '<meta name="viewport" content="' . of_get_option("meta_viewport") . '" />';
-
-
-		/*
-			These are for traditional favicons and Android home screens.
-			 - sizes: 1024x1024
-			 - transparency is OK
-			 - see wikipedia for info on browser support: http://mky.be/favicon/
-			 - See Google Developer docs for Android options. https://developers.google.com/chrome/mobile/docs/installtohomescreen
-		*/
-		if (true == of_get_option('head_favicon')) {
-			echo '<meta name=”mobile-web-app-capable” content=”yes”>';
-			echo '<link rel="shortcut icon" sizes=”1024x1024” href="' . of_get_option("head_favicon") . '" />';
-		}
-
-
-		/*
-			The is the icon for iOS Web Clip.
-			 - size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for iPhone4 retina display (IMHO, just go ahead and use the biggest one)
-			 - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
-			 - Transparency is not recommended (iOS will put a black BG behind the icon) -->';
-		*/
-		if (true == of_get_option('head_apple_touch_icon'))
-			echo '<link rel="apple-touch-icon" href="' . of_get_option("head_apple_touch_icon") . '">';
-	?>
-		<!-- CSS is loaded via the enqueue function - change as necessary 
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/static/css/style.css" />
-		-->
-
-		<!-- This is an un-minified, complete version of Modernizr.
-			 Before you move to production, you should generate a custom build that only has the detects you need. -->
-		<script src="<?php echo get_template_directory_uri(); ?>/static/js/modernizr.js"></script>
-
-	<!-- Application-specific meta tags -->
-	<?php
-		// Windows 8
-		if (true == of_get_option('meta_app_win_name')) {
-			echo '<meta name="application-name" content="' . of_get_option("meta_app_win_name") . '" /> ';
-			echo '<meta name="msapplication-TileColor" content="' . of_get_option("meta_app_win_color") . '" /> ';
-			echo '<meta name="msapplication-TileImage" content="' . of_get_option("meta_app_win_image") . '" />';
-		}
-
-		// Twitter
-		if (true == of_get_option('meta_app_twt_card')) {
-			echo '<meta name="twitter:card" content="' . of_get_option("meta_app_twt_card") . '" />';
-			echo '<meta name="twitter:site" content="' . of_get_option("meta_app_twt_site") . '" />';
-			echo '<meta name="twitter:title" content="' . of_get_option("meta_app_twt_title") . '">';
-			echo '<meta name="twitter:description" content="' . of_get_option("meta_app_twt_description") . '" />';
-			echo '<meta name="twitter:url" content="' . of_get_option("meta_app_twt_url") . '" />';
-		}
-
-		// Facebook
-		if (true == of_get_option('meta_app_fb_title')) {
-			echo '<meta property="og:title" content="' . of_get_option("meta_app_fb_title") . '" />';
-			echo '<meta property="og:description" content="' . of_get_option("meta_app_fb_description") . '" />';
-			echo '<meta property="og:url" content="' . of_get_option("meta_app_fb_url") . '" />';
-			echo '<meta property="og:image" content="' . of_get_option("meta_app_fb_image") . '" />';
-		}
-	?>
-
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
@@ -122,33 +46,59 @@
 
 <body <?php body_class(); ?>>
 
-		<header class="header" role="banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/static/images/bg/bg-01.jpg);">
-			<div class="row">
-				<div class="large-12 column">
-					<h1 class="logo">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-							<span class="logo__name">2415</span> 
-							<span class="logo__description">Landesunternehmen CaEx Niederösterreich</span>
-						</a>
-					</h1>
-					<p class="description"><?php bloginfo( 'description' ); ?></p>
-				</div>
-			</div>
+		<header class="header" role="banner">
+			<style type="text/css">
+				#respbg-image-01 {
+					background-image: url('<?php echo get_template_directory_uri(); ?>/static/images/bg/img-01-w800.jpg');
+				}
 
-			<div class="row">
-				<div class="small-8 medium-6 large-6 small-centered column">
-					<?php get_template_part('elements/watch'); ?>
+				@media only screen and (min-width: 40.063em) {
+					#respbg-image-01 {
+						background-image: url('<?php echo get_template_directory_uri(); ?>/static/images/bg/img-01-w1280.jpg');
+					}
+				}
+
+				@media only screen and (min-width: 52.063em) {
+					#respbg-image-01 {
+						background-image: url('<?php echo get_template_directory_uri(); ?>/static/images/bg/img-01.jpg');
+					}
+				}
+			</style>
+
+			<div id="respbg-image-01" class="respbg-image-wrapper">
+				<div class="row">
+					<div class="large-12 column">
+						<h1 class="logo">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+								<span class="logo__name">2415</span> 
+								<span class="logo__description">Landesunternehmen CaEx Niederösterreich</span>
+							</a>
+						</h1>
+						<p class="description"><?php bloginfo( 'description' ); ?></p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="small-10 medium-8 large-6 small-centered column">
+						<?php get_template_part('elements/watch'); ?>
+					</div>
 				</div>
 			</div>
 		</header>
 
 		<div class="header-spacer"></div>
-
-		<!-- <nav id="nav" role="navigation">
+		
+		<?php
+		if($blub === true) {
+		?>
+		<nav id="nav" role="navigation">
 			<div class="row">
 				<div class="large-12 column">
 					<?php wp_nav_menu( array('menu' => 'primary') ); ?>
 				</div>
 			</div>
-		</nav> -->
+		</nav>
+		<?php
+		}
+		?>
 
