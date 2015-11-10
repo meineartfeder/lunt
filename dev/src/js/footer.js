@@ -56,9 +56,13 @@
 		return Math.random() * (max - min) + min;
 	}
 
-	// jQuery(document).ready(function($) {
-	// 	animatePointerHours(watchHours, cxwh, cywh);
-	// 	animatePointerMinutes(watchMinutes, cxwm, cywm);
-	// });
+	jQuery(document).ready(function($) {
+		animatePointerHours(watchHours, cxwh, cywh);
+		animatePointerMinutes(watchMinutes, cxwm, cywm);
+
+		setTimeout(function(){
+			$('#header').removeClass('header--crazy');
+		}, 3000);
+	});
 
 })();

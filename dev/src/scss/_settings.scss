@@ -69,9 +69,9 @@ $base-font-size: 20px;
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
-$include-html-classes: true;
+$include-html-classes: false;
 $include-print-styles: false;
-$include-html-global-classes: $include-html-classes;
+$include-html-global-classes: true;
 
 // b. Grid
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -208,7 +208,7 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // e. Typography
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-type-classes: $include-html-classes;
+$include-html-type-classes: true;
 
 // We use these to control header font styles
 // $header-font-family: $body-font-family;
@@ -217,15 +217,15 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 // $header-font-color: $jet;
 $header-line-height: 1.1;
 // $header-top-margin: .2rem;
-// $header-bottom-margin: .5rem;
+$header-bottom-margin: .7rem;
 // $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
 $h1-font-size: rem-calc(64);
 $h2-font-size: rem-calc(57);
-$h3-font-size: rem-calc(47);
-$h4-font-size: rem-calc(33);
-$h5-font-size: rem-calc(28);
+$h3-font-size: rem-calc(40);
+$h4-font-size: rem-calc(30);
+$h5-font-size: rem-calc(20);
 $h6-font-size: 1rem;
 
 // We use these to control header size reduction on small screens
@@ -436,7 +436,7 @@ $alert-padding-top: rem-calc($font-size-normal);
 // 05. Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-button-classes: $include-html-classes;
+$include-html-button-classes: true;
 
 // We use these to build padding for buttons.
 // $button-tny: rem-calc(10);
@@ -632,7 +632,7 @@ $flex-video-margin-bottom: rem-calc($font-size-normal);
 // 11. Forms
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-form-classes: $include-html-classes;
+$include-html-form-classes: true;
 
 // We use this to set the base for lots of form spacing and positioning styles
 $form-spacing: rem-calc($font-size-normal);
@@ -730,7 +730,7 @@ $input-font-size: rem-calc($font-size-normal);
 // 13. Inline Lists
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-inline-list-classes: $include-html-classes;
+$include-html-inline-list-classes: true;
 
 // We use this to control the margins and padding of the inline list.
 // $inline-list-top-margin: 0;
@@ -1290,7 +1290,7 @@ $sub-nav-font-size: rem-calc($font-size-normal);
 // 30. Tables
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-table-classes: $include-html-classes;
+$include-html-table-classes: true;
 
 // These control the background color for the table and even rows
 // $table-bg: $white;
@@ -1481,7 +1481,7 @@ $tooltip-font-size-sml: rem-calc($font-size-normal);
 // 36. Visibility Classes
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-visibility-classes: $include-html-classes;
+$include-html-visibility-classes: true;
 // $include-accessibility-classes: true;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;

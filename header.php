@@ -46,7 +46,7 @@
 
 <body <?php body_class(); ?>>
 
-		<header class="header" role="banner">
+		<header id="header" class="header header--crazy" role="banner">
 			<style type="text/css">
 				#respbg-image-01 {
 					background-image: url('<?php echo get_template_directory_uri(); ?>/static/images/bg/img-01-w800.jpg');
@@ -88,17 +88,7 @@
 
 		<div class="header-spacer"></div>
 		
-		<?php
-		if($blub === true) {
-		?>
-		<nav id="nav" role="navigation">
-			<div class="row">
-				<div class="large-12 column">
-					<?php wp_nav_menu( array('menu' => 'primary') ); ?>
-				</div>
-			</div>
+		<nav id="nav" class="nav" role="navigation">
+			<?php wp_nav_menu( array('menu' => 'primary') ); ?>
 		</nav>
-		<?php
-		}
-		?>
 

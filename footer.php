@@ -8,7 +8,7 @@
 	<footer class="footer" role="contentinfo">
 		<div class="row">
 			<div class="large-12 column">
-				<p>&copy; <?php echo date("Y"); echo " "; bloginfo('name'); ?></p>
+				<p>&copy; <?php echo date("Y"); echo " &ndash; "; bloginfo('name'); ?></p>
 			</div>
 		</div>
 	</footer>

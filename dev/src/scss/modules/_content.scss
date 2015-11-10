@@ -24,6 +24,13 @@ body {
 // HEADER
 
 .header {
+	@include hardware-accelerated;
+	@include transition(all 400ms ease-in-out);
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
 	border: 15px solid $white;
 	width: 100%;
 	height: 100%;
@@ -31,6 +38,16 @@ body {
 	top: 0;
 	left: 0;
 	z-index: 0;
+	
+	.page-id-2 & {	
+		&.header--crazy {
+			-webkit-transform: rotate(-180deg);
+			-moz-transform: rotate(-180deg);
+			-ms-transform: rotate(-180deg);
+			-o-transform: rotate(-180deg);
+			transform: rotate(-180deg);
+		}
+	}
 	
 	.respbg-image-wrapper {
 		background-color: transparent;
@@ -62,6 +79,8 @@ body {
 	}
 
 	p {
+		font-size: rem-calc(27);
+		line-height: 1.1em;
 		color: #FFFFFF;
 	}
 
@@ -76,6 +95,12 @@ body {
 	svg {
 		path {
 			fill: #FFFFFF;
+		}
+	}
+
+	@include respond-to(small-only) {
+		p {
+			font-size: rem-calc(20);
 		}
 	}
 }
@@ -95,11 +120,91 @@ body {
 		display: block;
 	}
 
+	&__description {
+		line-height: 1em;
+	}
+
 	@include respond-to(small-only) {
 		font-size: rem-calc(30);
 		
 		&__name {
 			font-size: rem-calc(50);
+		}
+	}
+}
+
+// NAV
+
+.nav {
+	position: relative;
+	margin-top: rem-calc(-72);
+	
+	ul {
+		margin: 0;
+		overflow: hidden;
+
+		li {
+			margin: 0;
+			width: 50%;
+			float: left;
+			display: inline-block;
+		}
+	}
+
+	a {
+		-webkit-transition: all 300ms ease-in-out;
+		transition: all 300ms ease-in-out;
+		display: inline-block;
+		background-color: $primary-color;
+		color: $white;
+		padding: 20px 30px 20px 30px;
+		margin-bottom: 0;
+		font-weight: 300;
+		display: block;
+		text-align: center;
+
+		&:hover,
+		&:active {
+			background-color: #FFF;
+			color: $primary-color;
+		}
+	}
+
+	.current-menu-item {
+		a {
+			background-color: #FFF;
+			color: $primary-color;
+		}
+	}
+
+	.columns,
+	.column {
+		padding: 0;
+	}
+
+	@include respond-to(xlarge-up) {
+		position: fixed;
+		margin-top: 0;
+		top: 12%;
+		left: 0;
+		z-index: 100;
+
+		ul {
+			li {
+				float: none;
+			}
+		}
+
+		a {
+			padding: 7px 30px 7px 20px;
+			margin-bottom: 6px;
+			display: inline-block;
+			text-align: left;
+
+			&:hover,
+			&:active {
+				padding-left: 30px;
+			}
 		}
 	}
 }
@@ -112,11 +217,26 @@ body {
 	background-color: $white;
 	z-index: 10;
 	position: relative;
-	margin-top: rem-calc(-100);
+	// margin-top: rem-calc(-72);
+
+	h2 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+	@include respond-to(xlarge-up) {
+		margin-top: rem-calc(-100);
+	}
 }
 
 .footer {
-	background-color: $white;
+	padding: rem-calc(30);
+	background-color: #EFEFEF;
 	z-index: 10;
 	position: relative;
+	text-align: center;
+
+	p {
+		margin-bottom: 0;
+	}
 }
